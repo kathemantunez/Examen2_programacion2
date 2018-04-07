@@ -201,6 +201,14 @@ public class principal_exam extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
         arbol_amigos = new javax.swing.JTree();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        JL_1 = new javax.swing.JList<>();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        texaa = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -1011,6 +1019,73 @@ public class principal_exam extends javax.swing.JFrame {
 
         tab.addTab("solicitud", jPanel8);
 
+        JL_1.setModel(new DefaultListModel()
+        );
+        jScrollPane12.setViewportView(JL_1);
+
+        jLabel26.setText("PROBLEMAS");
+
+        texaa.setColumns(20);
+        texaa.setRows(5);
+        jScrollPane11.setViewportView(texaa);
+
+        jButton5.setText("Visualizar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("cargar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel26))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6))))
+                .addContainerGap(497, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel26)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)))
+                .addComponent(jButton5)
+                .addGap(207, 207, 207))
+        );
+
+        tab.addTab("PROBLEMAS", jPanel9);
+
         jMenu5.setText("USUARIO NORMAL");
 
         jMenuItem7.setText("abrir");
@@ -1722,12 +1797,8 @@ public class principal_exam extends javax.swing.JFrame {
                     }
                       
         }
-              
-                
-                
-            
-    
              }
+                 
              
              
     }//GEN-LAST:event_tabStateChanged
@@ -1860,6 +1931,47 @@ public class principal_exam extends javax.swing.JFrame {
           
     }//GEN-LAST:event_agregar_amigosActionPerformed
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        int x=JL_1.getSelectedIndex();
+        texaa.setText("");
+        if(x>=0){
+              admin_problemas c=new admin_problemas("./problemas.cbm");
+                 c.cargarArchivo();
+                 
+                for (int i = 0; i < c.getListas_problemas().size(); i++) {
+                if(i==x){
+                    texaa.setText(c.getListas_problemas().get(i).toString());
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        
+                 admin_problemas c=new admin_problemas("./problemas.cbm");
+                 c.cargarArchivo();
+                      DefaultListModel model=(DefaultListModel)JL_1.getModel();
+                        model.removeAllElements();
+                        JL_1.setModel(model);
+                        
+                        for (int i = 0; i < c.getListas_problemas().size(); i++) {
+                         model.addElement(c.getListas_problemas().get(i));
+            
+                         }
+                        JL_1.setModel(model);
+                     
+                 
+              
+                
+                
+            
+    
+             
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1896,6 +2008,7 @@ public class principal_exam extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> JL_1;
     private javax.swing.JDialog USUARIO;
     private javax.swing.JMenuItem agregar_amigos;
     private javax.swing.JButton agregar_usuario;
@@ -1923,6 +2036,8 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1944,6 +2059,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1978,8 +2094,11 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2011,6 +2130,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JTable tabla2;
     private javax.swing.JTable tabla_usuarios;
     private javax.swing.JTextArea tax2;
+    private javax.swing.JTextArea texaa;
     private javax.swing.JTextArea texta;
     private javax.swing.JTextField tf_contraseña;
     private javax.swing.JTextField tf_contraseña_login;
