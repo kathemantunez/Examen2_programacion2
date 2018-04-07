@@ -16,11 +16,20 @@ public class problemas extends publicaciones{
     private ArrayList lista_resp=new ArrayList();
     private String estado;
     private int categoria;
+    private String respuesta;
 
     public problemas(String estado, int categoria, String ID, String mensajes, usuario_normal usuario_autor, String privacidad, Date fecha) {
         super(ID, mensajes, usuario_autor, privacidad, fecha);
         this.estado = estado;
         this.categoria = categoria;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
     }
 
     
