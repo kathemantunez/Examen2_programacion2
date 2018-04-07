@@ -39,7 +39,7 @@ private static final long SerialVersionUID=777L;//version
 
     @Override
     public String toString() {
-        return "solicitud de=" + emisor ;
+        return  emisor.toString() ;
     }
 
     

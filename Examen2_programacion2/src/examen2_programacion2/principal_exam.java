@@ -193,11 +193,14 @@ public class principal_exam extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         arbol = new javax.swing.JTree();
-        jButton6 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         tabla_usuarios = new javax.swing.JTable();
         jLabel24 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        arbol_amigos = new javax.swing.JTree();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -208,6 +211,8 @@ public class principal_exam extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        menu1 = new javax.swing.JPopupMenu();
+        agregar_amigos = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -916,14 +921,12 @@ public class principal_exam extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("solicitudes");
         arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane8.setViewportView(arbol);
-
-        jButton6.setText("cargar");
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+        arbol.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
+                arbolMouseClicked(evt);
             }
         });
+        jScrollPane8.setViewportView(arbol);
 
         tabla_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -947,6 +950,14 @@ public class principal_exam extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setText("solicitudes");
+
+        jLabel25.setText("amigos");
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("amigos");
+        arbol_amigos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane10.setViewportView(arbol_amigos);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -956,19 +967,23 @@ public class principal_exam extends javax.swing.JFrame {
                 .addComponent(jLabel24)
                 .addGap(395, 395, 395))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(jButton10))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(jButton10)))
+                            .addComponent(jLabel18)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(198, 198, 198)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -980,11 +995,18 @@ public class principal_exam extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         tab.addTab("solicitud", jPanel8);
@@ -1037,6 +1059,14 @@ public class principal_exam extends javax.swing.JFrame {
                 .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        agregar_amigos.setText("Agregar a mis amigos");
+        agregar_amigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregar_amigosActionPerformed(evt);
+            }
+        });
+        menu1.add(agregar_amigos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1620,10 +1650,12 @@ public class principal_exam extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz=(DefaultMutableTreeNode)modelo_arbol.getRoot();
         raiz.removeAllChildren();
         modelo_arbol.reload();
+       
          for (int i = 0; i < ap.getListas_usuario_normal().size(); i++) {
             if(ap.getListas_usuario_normal().get(i).getNombre().equals(nombre.getText())){
+             
                 for (int j = 0; j < ap.getListas_usuario_normal().get(i).getSolicitudes().size(); j++) {
-                    
+                  
                         
 //                        DefaultMutableTreeNode p=new DefaultMutableTreeNode(ima);
 //                        
@@ -1638,6 +1670,37 @@ public class principal_exam extends javax.swing.JFrame {
                 }
             }
         }
+         
+        }
+         
+         
+          if(tab.getSelectedIndex()==4){
+           DefaultTreeModel modelo_arbol2=(DefaultTreeModel)arbol_amigos.getModel();
+        DefaultMutableTreeNode raiz2=(DefaultMutableTreeNode)modelo_arbol2.getRoot();
+        raiz2.removeAllChildren();
+        modelo_arbol2.reload();
+         for (int i = 0; i < ap.getListas_usuario_normal().size(); i++) {
+            if(ap.getListas_usuario_normal().get(i).getNombre().equals(nombre.getText())){
+                for (int j = 0; j < ap.getListas_usuario_normal().get(i).getAmigos().size(); j++) {
+                    
+                        
+//                        DefaultMutableTreeNode p=new DefaultMutableTreeNode(ima);
+//                        
+//                        n.add(p);
+                        raiz2.add(new DefaultMutableTreeNode(ap.getListas_usuario_normal().get(i).getAmigos().get(j)));
+                        
+          
+                    
+          
+          arbol_amigos.setModel(new DefaultTreeModel(raiz2));
+          modelo_arbol2.reload();
+                }
+            }
+        }
+         
+         
+         
+         
    
             
         }
@@ -1722,7 +1785,6 @@ public class principal_exam extends javax.swing.JFrame {
 
             admin_usuario_normal ap=new admin_usuario_normal("./usuario_normal.cbm");
             ap.cargarArchivo();
-            ap.cargarArchivo();
 
             for (int i = 0; i < ap.getListas_usuario_normal().size(); i++) {
                 if(ap.getListas_usuario_normal().get(i).getNombre().equals(nombre.getText())){
@@ -1749,32 +1811,54 @@ public class principal_exam extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton10MouseClicked
 
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+    private void arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolMouseClicked
         // TODO add your handling code here:
-        admin_usuario_normal ap=new admin_usuario_normal("./usuario_normal.cbm");
-        ap.cargarArchivo();
-
-//        DefaultComboBoxModel modelo=new DefaultComboBoxModel(
-//            ap.getListas_usuario_normal().toArray());//toArray convierte de array a arreglo
-//        cb_usuario_solicitud.setModel(modelo);
-
-        DefaultTreeModel modelo_arbol=(DefaultTreeModel)arbol.getModel();
-        DefaultMutableTreeNode raiz=(DefaultMutableTreeNode)modelo_arbol.getRoot();
-
-        for (int a = 0; a < ap.getListas_usuario_normal().size(); a++) {
-            if(ap.getListas_usuario_normal().get(a).equals(usuario_normal_actual)){
-                for (int i = 0; i < ap.getListas_usuario_normal().get(a).getSolicitudes().size(); i++) {
-                    solicitudes sol =ap.getListas_usuario_normal().get(a).getSolicitudes().get(i);
-                    DefaultMutableTreeNode p=new DefaultMutableTreeNode(sol);
-
-                    raiz.add(p);
-                   
-                    modelo_arbol.reload();
-                }
-            }
+        if(evt.isMetaDown()){
+            System.out.println("si");
+ int row=arbol.getClosestRowForLocation(evt.getX(), evt.getY());//seleccionar seleccioanda mas cercana
+            arbol.setSelectionRow(row);//Seleccionar fila
+             Object v1=arbol.getSelectionPath().getLastPathComponent();//obtener nodod seleccionado(la ruta)
+            nodo_seleccionado=(DefaultMutableTreeNode)v1;
+            System.out.println(nodo_seleccionado.getUserObject().toString());
+             System.out.println("hola");
+            if(nodo_seleccionado.getUserObject()instanceof solicitudes ){//Saber que tipo de nodo esta en el newtable
+             usuario2=nodo_seleccionado.getUserObject().toString();
+                
+                menu1.show(evt.getComponent(), evt.getX(), evt.getY());
+//      
+//        
+//            }
+        
         }
+        }
+    }//GEN-LAST:event_arbolMouseClicked
 
-    }//GEN-LAST:event_jButton6MouseClicked
+    private void agregar_amigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_amigosActionPerformed
+        // TODO add your handling code here:
+           admin_usuario_normal ap=new admin_usuario_normal("./usuario_normal.cbm");
+            ap.cargarArchivo();
+             String temp=usuario2;
+             System.out.println("hola");
+           for (int i = 0; i < ap.getListas_usuario_normal().size(); i++) {
+               System.out.println("mundo");
+                if(ap.getListas_usuario_normal().get(i).getNombre().equals(nombre.getText())){
+                    System.out.println("mio");
+                    for (int j = 0; j < ap.getListas_usuario_normal().size(); j++) {
+                        System.out.println(temp);
+                        if(ap.getListas_usuario_normal().get(j).getNombre().equals(temp)){
+                            System.out.println("si");
+                    ap.getListas_usuario_normal().get(i).setAmigos(ap.getListas_usuario_normal().get(j));
+                    ap.getListas_usuario_normal().get(j).setAmigos(ap.getListas_usuario_normal().get(i));
+                    ap.escribirArchivo();
+                    JOptionPane.showMessageDialog(menu_normal, "agregado");
+                            System.out.println("agregado");
+                       }
+                    }
+                }
+           }
+           
+          
+    }//GEN-LAST:event_agregar_amigosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1813,8 +1897,10 @@ public class principal_exam extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog USUARIO;
+    private javax.swing.JMenuItem agregar_amigos;
     private javax.swing.JButton agregar_usuario;
     private javax.swing.JTree arbol;
+    private javax.swing.JTree arbol_amigos;
     private javax.swing.JButton bloquear_normal;
     private javax.swing.JButton bloquear_publicaciones;
     private javax.swing.JRadioButton bt_abierto;
@@ -1837,7 +1923,6 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1850,6 +1935,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1857,6 +1943,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1892,6 +1979,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1909,6 +1997,7 @@ public class principal_exam extends javax.swing.JFrame {
     private javax.swing.JLabel lb_imagen;
     private javax.swing.JDialog login;
     private javax.swing.JButton loging;
+    private javax.swing.JPopupMenu menu1;
     private javax.swing.JDialog menu_administrador;
     private javax.swing.JDialog menu_normal;
     private javax.swing.JSpinner new_fecha;
@@ -1938,4 +2027,6 @@ usuario_normal usuario_normal_actual;
 usuario_administrador usuario_admin_actual;
 
 ArrayList<solicitudes> solicitud=new ArrayList();
+DefaultMutableTreeNode nodo_seleccionado;
+String usuario2;
 }

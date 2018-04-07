@@ -15,7 +15,7 @@ import javax.swing.Icon;
  */
 public class usuario_normal extends Usuario{
     private ArrayList<publicaciones> publicaciones=new ArrayList();
-    private ArrayList<amigos> amigos=new ArrayList();
+    private ArrayList<usuario_normal> amigos=new ArrayList();
     private  ArrayList<solicitudes> solicitudes=new ArrayList();
     private String nombre2;
 
@@ -42,13 +42,15 @@ public class usuario_normal extends Usuario{
         this.publicaciones.add(publicaciones);
     }
 
-    public ArrayList<amigos> getAmigos() {
+    public ArrayList<usuario_normal> getAmigos() {
         return amigos;
     }
 
-    public void setAmigos(ArrayList<amigos> amigos) {
-        this.amigos = amigos;
+    public void setAmigos(usuario_normal amigos) {
+        this.amigos.add(amigos);
     }
+
+   
 
     public ArrayList<solicitudes> getSolicitudes() {
         return solicitudes;
